@@ -20,12 +20,84 @@ h3{
     font-size: 1em;
     color: #555;
 }
+fieldset{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+label{
+    width: 100%;
+    display: block;
+    font-size: .8em;
+}
+
+textarea{
+    width: 100%;
+    height: 75px;
+}
+
+form, #suggestions{
+    width: 500px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-color: #ededed;
+}
+
+#feed{
+    margin: 0;
+    padding: 0;
+    padding: none;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+#feed li{
+    border-top: 1px solid #c2c2c2;
+    background-color: #ededed;
+    list-style: none;
+    padding: 5px;
+}
+textarea, input{
+    margin-bottom: 5px;
+}
+
+#footer{
+    border-top: 1px solid #ededed;
+    margin-top: 50px;
+    font-size: .7em;
+    text-align: center;
+}
 </style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+$().ready(function(){
+    $("#show_share_form").click(function(){
+        $("#share_form").toggle();
+        return false;
+    });
+    $("#show_suggestions").click(function(){
+        $("#suggestions").toggle();
+        return false;
+    });
+    $("#show_follow_form").click(function(){
+        $("#follow_form").toggle();
+        return false;
+    });
+})
+
+</script>
+
 </head>
 <body>
 <h1>
 See Good, Do Good
 </h1>
+
 
 <h2>
 1. Gush Good.
@@ -35,8 +107,26 @@ Someone did something nice for you and gave you a card telling you to come here.
 </h3>
 
 <h3>
-<a href="#">Share your warm fuzzies with the world &raquo;</a>
+<a href="#" id="show_share_form">Share your warm fuzzies with the world &raquo;</a>
 </h3>
+
+<form id="share_form" style="display: none;">
+<fieldset>
+<label for="story">
+What happened ("d'awwwww"-insipring details encouraged):
+</label>
+<textarea id="story"> </textarea>
+<label for="where">
+Where:
+</label>
+<input type="text" id="where"/>
+<label for="card_id">
+Magic number from the card:
+</label>
+<input type="text" id="card_id"/>
+</fieldset>
+<input type="submit" value="Gush it &raquo;"/>
+</form>
 
 <h2>
 2. Do Good.
@@ -46,8 +136,22 @@ Pass it on! Do something nice for a stranger, and hand them the card that you go
 </h3>
 
 <h3>
-<a href="#">See suggestions for good deeds &raquo;</a>
+<a href="#" id="show_suggestions">See suggestions for good deeds &raquo;</a>
 </h3>
+
+<div id="suggestions" style="display: none;">
+<ul>
+<li>
+Pay for the person behind you in line at a cafe.
+</li>
+<li>
+Give someone chocolate.
+</li>
+<li>
+Give someone a water bottle on a hot day.
+</li>
+</ul>
+</div>
 
 <h2>
 3. Watch Good.
@@ -56,8 +160,42 @@ Pass it on! Do something nice for a stranger, and hand them the card that you go
 The good deed that you did creates a cascade of ooey warm goodness as the card gets passed around.
 </h3>
 <h3>
-<a href="#">Follow the good deeds related to your card &raquo;</a>
+<a href="#" id="show_follow_form">Follow the good deeds related to your card &raquo;</a>
 </h3>
 
+<form id="follow_form" style="display: none;">
+<fieldset>
+<label for="email">
+Your email:
+</label>
+<input type="text" id="email"/>
+<label for="card_id">
+Magic number from the card:
+</label>
+<input type="text" id="card_id"/>
+</fieldset>
+<input type="submit" value="Watch Good &raquo;"/>
+</form>
+
+<h3>
+Latest Good:
+</h3>
+
+<ul id="feed">
+<li>
+    Someone just bought me coffee!
+</li>
+<li>
+    I was walking down the street and some guy handed me a chocolate bar and this card!
+</li>
+<li>
+    A couple strangers having a picnic invited me to sit down with them. Fresh strawberries OMFG.
+</li>
+
+</ul>
+
+<div id="footer">
+Wanna get in touch? <a href="mailto:gameguy43@gmail.com">email us</a>. Source code available <a href="">here</a>.
+</div>
 </body>
 </html>
