@@ -13,8 +13,22 @@ body{
     margin: auto;
     font-family: helvetica, arial, sans-serif;
 }
+a{
+    text-decoration: none;
+    color: #0276FD;
+}
+a:hover{
+    text-decoration: underline;
+}
 h1{
     margin-top: 30px;
+    text-align: left;
+}
+h2{
+    margin-top: 50px;
+}
+h2 .getin{
+    font-size: .65em;
 }
 h3{
     font-size: 1em;
@@ -49,16 +63,56 @@ form, #suggestions{
 #feed{
     margin: 0;
     padding: 0;
-    padding: none;
+    text-align: center;
+}
+#feed iframe{
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+#feed ul{
+    text-align: left;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    background-color: #f2f2f2;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+    height: 400px;
+    /*
+    overflow: auto;
+    height: 500px;
+    */
+}
+#feed ul .more{
+    font-size: .9em;
+    display: block;
+    margin-left: 10px;
+    text-align: center;
 }
 #feed li{
-    border-top: 1px solid #c2c2c2;
-    background-color: #ededed;
+    font-size: .9em;
+    color: #3d3d3d;
+    border-bottom: 1px solid #dedede;
     list-style: none;
     padding: 5px;
+    margin: 5px;
+    text-align: left;
+}
+#feed .from{
+    font-size: .8em;
+    vertical-align: bottom;
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: #4d4d4d;
+    margin: 0 5px 5px 5px;
 }
 textarea, input{
     margin-bottom: 5px;
@@ -72,7 +126,10 @@ textarea, input{
 }
 </style>
 
+<!--
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+-->
 
 <script type="text/javascript">
 $().ready(function(){
@@ -95,9 +152,46 @@ $().ready(function(){
 </head>
 <body>
 <h1>
-See Good, Do Good
+<img src="sgdg.jpg" />
 </h1>
 
+<h2>
+Latest Good
+<!--
+<br />
+<a class="getin" href="#">(Get in on this!)</a>
+-->
+</h2>
+
+<div id="feed">
+<ul>
+<li>
+    &ldquo;Someone just bought me coffee!&rdquo;
+    <span class="from">
+         &mdash;Boulder, CO
+    </span>
+</li>
+<li>
+    &ldquo;I was walking down the street and some guy handed me a chocolate bar and this card!&rdquo;
+    <span class="from">
+         &mdash;Los Angeles, CA
+    </span>
+</li>
+<li>
+    &ldquo;A couple strangers having a picnic invited me to sit down with them. Fresh strawberries OMFG.&rdquo;
+    <span class="from">
+         &mdash;Louisiana, IL
+    </span>
+</li>
+<a class="more" href="#">More Good</a>
+</ul>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;ll=38.548165,-121.35498&amp;spn=4.656524,6.778564&amp;z=7&amp;vpsrc=6&amp;iwloc=lyrftr:starred_items:117194495461377495575:,2169+Mission,37.76203,-122.420654&amp;output=embed"></iframe>
+</div>
+
+
+<h1>
+3 easy steps to get in on the Good:
+</h1>
 
 <h2>
 1. Gush Good.
@@ -107,7 +201,10 @@ Someone did something nice for you and gave you a card telling you to come here.
 </h3>
 
 <h3>
-<a href="#" id="show_share_form">Share your warm fuzzies with the world &raquo;</a>
+<a href="#" id="show_share_form">Share your warm fuzzies with the world</a>
+</h3>
+<h3>
+<a href="#">Don't have a card? Request one</a>
 </h3>
 
 <form id="share_form" style="display: none;">
@@ -125,7 +222,7 @@ Magic number from the card:
 </label>
 <input type="text" id="card_id"/>
 </fieldset>
-<input type="submit" value="Gush it &raquo;"/>
+<input type="submit" value="Gush it"/>
 </form>
 
 <h2>
@@ -136,7 +233,7 @@ Pass it on! Do something nice for a stranger, and hand them the card that you go
 </h3>
 
 <h3>
-<a href="#" id="show_suggestions">See suggestions for good deeds &raquo;</a>
+<a href="#" id="show_suggestions">See suggestions for good deeds</a>
 </h3>
 
 <div id="suggestions" style="display: none;">
@@ -160,7 +257,7 @@ Give someone a water bottle on a hot day.
 The good deed that you did creates a cascade of ooey warm goodness as the card gets passed around.
 </h3>
 <h3>
-<a href="#" id="show_follow_form">Follow the good deeds related to your card &raquo;</a>
+<a href="#" id="show_follow_form">Follow the good deeds related to your card</a>
 </h3>
 
 <form id="follow_form" style="display: none;">
@@ -174,25 +271,9 @@ Magic number from the card:
 </label>
 <input type="text" id="card_id"/>
 </fieldset>
-<input type="submit" value="Watch Good &raquo;"/>
+<input type="submit" value="Watch Good"/>
 </form>
 
-<h3>
-Latest Good:
-</h3>
-
-<ul id="feed">
-<li>
-    Someone just bought me coffee!
-</li>
-<li>
-    I was walking down the street and some guy handed me a chocolate bar and this card!
-</li>
-<li>
-    A couple strangers having a picnic invited me to sit down with them. Fresh strawberries OMFG.
-</li>
-
-</ul>
 
 <div id="footer">
 Wanna get in touch? <a href="mailto:gameguy43@gmail.com">email us</a>. Source code available <a href="">here</a>.
