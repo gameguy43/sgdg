@@ -124,15 +124,56 @@ textarea, input{
     font-size: .7em;
     text-align: center;
 }
+#tabs{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    border-bottom: 1px solid #dedede;
+    z-index: 0;
+    background-color: white;
+}
+#tabs li{
+    display: inline;
+    font-size: 2em;
+    margin-right: 20px;
+    border: 1px solid #dedede;
+    border-bottom: 0;
+    padding: 5px 15px 5px 15px;
+    z-index: -1;
+    vertical-align: top;
+    padding-bottom: 1px;
+
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#tabs li a{
+    color: black;
+}
+#tabs li.selected{
+    position: relative;
+    top: 1px;
+    background-color: white;
+    z-index: 1;
+}
+
+#feedtab, #gotcardtab{
+    padding-top: 50px;
+}
+
 </style>
 
-<!--
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
--->
 
 <script type="text/javascript">
 $().ready(function(){
+    $("#gotcardtab").hide();
+    $("#latestgoodtaba").parent().addClass('selected');
     $("#show_share_form").click(function(){
         $("#share_form").toggle();
         return false;
@@ -145,6 +186,18 @@ $().ready(function(){
         $("#follow_form").toggle();
         return false;
     });
+    $("#latestgoodtaba").click(function(){
+        $("#feedtab").show();
+        $("#gotcardtab").hide();
+        $("#latestgoodtaba").parent().addClass('selected');
+        $("#gotacardtaba").parent().removeClass('selected');
+    });
+    $("#gotacardtaba").click(function(){
+        $("#gotcardtab").show();
+        $("#feedtab").hide();
+        $("#gotacardtaba").parent().addClass('selected');
+        $("#latestgoodtaba").parent().removeClass('selected');
+    });
 })
 
 </script>
@@ -155,13 +208,19 @@ $().ready(function(){
 <img src="sgdg.jpg" />
 </h1>
 
-<h2>
+<ul id="tabs">
+<li>
+<a href="#" id="latestgoodtaba">
 Latest Good
-<!--
-<br />
-<a class="getin" href="#">(Get in on this!)</a>
--->
-</h2>
+</a>
+</li>
+<li>
+<a href="#" id="gotacardtaba">
+Got a Card? Pass it on!
+</a>
+</li>
+</ul>
+<div id="feedtab">
 
 <div id="feed">
 <ul>
@@ -188,6 +247,9 @@ Latest Good
 <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;ll=38.548165,-121.35498&amp;spn=4.656524,6.778564&amp;z=7&amp;vpsrc=6&amp;iwloc=lyrftr:starred_items:117194495461377495575:,2169+Mission,37.76203,-122.420654&amp;output=embed"></iframe>
 </div>
 
+</div>
+
+<div id="gotcardtab">
 
 <h1>
 3 easy steps to get in on the Good:
@@ -273,6 +335,8 @@ Magic number from the card:
 </fieldset>
 <input type="submit" value="Watch Good"/>
 </form>
+
+</div>
 
 
 <div id="footer">
